@@ -81,7 +81,6 @@ const DataTweet = ({
     const token = getToken();
     async function fetchData() {
       const isSearch = search && `&search=${search}`;
-      console.log(isSearch);
       const order =
         selectedOrderOption && `?orderBy=${selectedOrderOption.column}`;
       axios
