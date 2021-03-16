@@ -1,52 +1,52 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Row, Card, CardBody, Col } from 'reactstrap';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Row, Card, CardBody, Col } from "reactstrap";
 import {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
   Marker,
   InfoWindow,
-} from 'react-google-maps';
-import { getToken } from '../../../helpers/Utils';
-import { compose, withProps, withState, withHandlers } from 'recompose';
-import { baseUrl } from '../../../constants/defaultValues';
-import Breadcrumb from '../../../containers/navs/Breadcrumb';
-import { Colxx, Separator } from '../../../components/common/CustomBootstrap';
+} from "react-google-maps";
+import { getToken } from "../../../helpers/Utils";
+import { compose, withProps, withState, withHandlers } from "recompose";
+import { baseUrl } from "../../../constants/defaultValues";
+import Breadcrumb from "../../../containers/navs/Breadcrumb";
+import { Colxx, Separator } from "../../../components/common/CustomBootstrap";
 
 const MapWithAMarker = compose(
   withProps({
-    googleMapURL: `https://maps.googleapis.com/maps/api/js?key=AIzaSyC5Aexnwo5TYY3RVzF3JzvI9bUwWuVwdcs&v=3.exp&libraries=geometry,drawing,places`,
+    googleMapURL: `https://maps.googleapis.com/maps/api/js?key=&v=3.exp&libraries=geometry,drawing,places`,
     loadingElement: (
       <div
         style={{
-          height: '100vh',
-          width: '100%',
+          height: "100vh",
+          width: "100%",
         }}
       />
     ),
     containerElement: (
       <div
         style={{
-          height: '100vh',
-          width: '100%',
+          height: "100vh",
+          width: "100%",
         }}
       />
     ),
     mapElement: (
       <div
         style={{
-          height: '100vh',
-          width: '100%',
+          height: "100vh",
+          width: "100%",
         }}
       />
     ),
   }),
   withScriptjs,
   withGoogleMap,
-  withState('zoom', 'setZoom', 12),
-  withState('id', 'setId', ''),
-  withState('isVisible', 'setIsVisible', false),
+  withState("zoom", "setZoom", 12),
+  withState("id", "setId", ""),
+  withState("isVisible", "setIsVisible", false),
   withHandlers(() => {
     const refs = {
       map: undefined,
@@ -83,12 +83,12 @@ const MapWithAMarker = compose(
             lat: item.location.coords.latitude,
             lng: item.location.coords.longitude,
           }}
-          label={props.zoom >= 15 ? item.name : ''}
+          label={props.zoom >= 15 ? item.name : ""}
           onClick={() => props.onClick(item._id)}
         >
           {item._id === props.id && (
-            <InfoWindow onCloseClick={() => props.onClick('')}>
-              <div style={{ maxWidth: '200px' }}>
+            <InfoWindow onCloseClick={() => props.onClick("")}>
+              <div style={{ maxWidth: "200px" }}>
                 <b>{item.name}</b> <br />
                 <b>{item.contact}</b> <br />
                 <b>{item.school.name}</b> <br />
@@ -99,7 +99,7 @@ const MapWithAMarker = compose(
                   <a
                     href={`https://www.google.com/maps/search/${item.location.coords.latitude},${item.location.coords.longitude}`}
                     target="_blank"
-                    style={{ color: '#427fed' }}
+                    style={{ color: "#427fed" }}
                   >
                     <i className="fa fa-map" aria-hidden="true" /> Lihat di
                     google map
