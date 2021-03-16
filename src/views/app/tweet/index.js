@@ -1,15 +1,12 @@
-import React, { Suspense } from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import React, { Suspense } from "react";
+import { Redirect, Route, Switch } from "react-router-dom";
 
-const CompalaintData = React.lazy(() =>
-  import(/* webpackChunkName: "ui-CompalintData" */ './complaint-data')
-);
-const ComplaintLocation = React.lazy(() =>
-  import(/* webpackChunkName: "ui-ComplaintLocation" */ './complaint-location')
+const DataTraining = React.lazy(() =>
+  import(/* webpackChunkName: "ui-CompalintData" */ "./data-training")
 );
 
-const DataMining = React.lazy(() =>
-  import(/* webpackChunkName: "ui-ComplaintLocation" */ './data-mining')
+const TweetCovid = React.lazy(() =>
+  import(/* webpackChunkName: "ui-ComplaintLocation" */ "./tweet-covid")
 );
 
 const UI = ({ match }) => (
@@ -17,16 +14,13 @@ const UI = ({ match }) => (
     <Switch>
       <Redirect exact from={`${match.url}/`} to={`${match.url}/list`} />
       <Route
-        path={`${match.url}/list`}
-        render={(props) => <CompalaintData {...props} />}
+        path={`${match.url}/data-training`}
+        render={(props) => <DataTraining {...props} />}
       />
+
       <Route
-        path={`${match.url}/maps`}
-        render={(props) => <ComplaintLocation {...props} />}
-      />
-      <Route
-        path={`${match.url}/data-mining`}
-        render={(props) => <DataMining {...props} />}
+        path={`${match.url}/tweet-covid`}
+        render={(props) => <TweetCovid {...props} />}
       />
       <Redirect to="/error" />
     </Switch>

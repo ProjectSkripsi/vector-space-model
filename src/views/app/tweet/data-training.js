@@ -52,9 +52,8 @@ const DataTweet = ({
   selectedTodoItemsChangeAction,
 }) => {
   const [modalProgressOpen, setModalProgressOpen] = useState(false);
-  const [dropdownSplitOpen, setDropdownSplitOpen] = useState(false);
   const [displayOptionsIsOpen, setDisplayOptionsIsOpen] = useState(false);
-  const [lastChecked, setLastChecked] = useState(null);
+
   const [selectedPageSize, setSelectedPageSize] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState("");
@@ -67,7 +66,6 @@ const DataTweet = ({
   const [items, setItems] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [selectedProgress, setSelectedProgress] = useState({});
-  const [updateType, setUpdateType] = useState("");
 
   useEffect(() => {
     document.body.classList.add("right-menu");
@@ -104,58 +102,6 @@ const DataTweet = ({
     }
     fetchData();
   }, [selectedPageSize, currentPage, selectedOrderOption, search]);
-
-  const handleCheckChange = (event, id) => {
-    if (lastChecked == null) {
-      setLastChecked(id);
-    }
-
-    let selectedList = Object.assign([], selectedItems);
-    if (selectedList.includes(id)) {
-      selectedList = selectedList.filter((x) => x !== id);
-    } else {
-      selectedList.push(id);
-    }
-    selectedTodoItemsChangeAction(selectedList);
-
-    if (event.shiftKey) {
-      let items = todoItems;
-      const start = getIndex(id, items, "id");
-      const end = getIndex(lastChecked, items, "id");
-      items = items.slice(Math.min(start, end), Math.max(start, end) + 1);
-      selectedList.push(
-        ...items.map((item) => {
-          return item.id;
-        })
-      );
-      selectedList = Array.from(new Set(selectedList));
-      selectedTodoItemsChangeAction(selectedList);
-    }
-  };
-
-  const assignMining = (id, status) => {
-    const token = getToken();
-    axios
-      .patch(
-        `${baseUrl}/complaint/data-mining/${id}/${status}`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-      .then((res) => {
-        return res.data;
-      })
-      .then((data) => {
-        createNotification("success", "Berhasil assign data mining");
-        fetchNewUpdate();
-      })
-      .catch((error) => {
-        createNotification("error");
-      });
-  };
 
   const fetchNewUpdate = () => {
     const token = getToken();
@@ -228,67 +174,35 @@ const DataTweet = ({
     setSelectedOrderOption(order);
   };
 
-  const onSubmitProgress = (e, errors) => {
+  const onUpdateClassification = (e, errors) => {
     const token = getToken();
-    const { note, progress, _id, criteria } = selectedProgress;
-
-    if (updateType === "progress") {
-      if (errors.length === 0 && progress !== "process") {
-        axios
-          .patch(
-            `${baseUrl}/complaint/${_id}`,
-            {
-              progress: progress,
-              note: note,
+    const { _id, classificationCode } = selectedProgress;
+    if (errors.length === 0) {
+      axios
+        .patch(
+          `${baseUrl}/tweet/update/${_id}`,
+          {
+            classificationCode,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
             },
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          )
-          .then((res) => {
-            return res.data;
-          })
-          .then((data) => {
-            createNotification("success", "Berhasil update progress");
-            fetchNewUpdate();
-            setModalProgressOpen(false);
-          })
-          .catch((error) => {
-            createNotification("error");
-          });
-      } else {
-        createNotification("error");
-      }
+          }
+        )
+        .then((res) => {
+          return res.data;
+        })
+        .then((data) => {
+          createNotification("success", "Berhasil update klasifikasi");
+          fetchNewUpdate();
+          setModalProgressOpen(false);
+        })
+        .catch((error) => {
+          createNotification("error");
+        });
     } else {
-      if (criteria) {
-        axios
-          .patch(
-            `${baseUrl}/complaint/criteria/${_id}`,
-            {
-              criteria,
-            },
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          )
-          .then((res) => {
-            return res.data;
-          })
-          .then((data) => {
-            createNotification("success", "Berhasil update kriteria");
-            fetchNewUpdate();
-            setModalProgressOpen(false);
-          })
-          .catch((error) => {
-            createNotification("error");
-          });
-      } else {
-        createNotification("error");
-      }
+      createNotification("error");
     }
   };
 
@@ -314,9 +228,8 @@ const DataTweet = ({
             modalProgressOpen={modalProgressOpen}
             setModalProgressOpen={setModalProgressOpen}
             data={selectedProgress}
-            onSubmitProgress={onSubmitProgress}
+            onUpdateClassification={onUpdateClassification}
             onChange={onChange}
-            updateType={updateType}
           />
 
           <div className="mb-2">
@@ -373,17 +286,13 @@ const DataTweet = ({
                   <TodoListItem
                     key={`todo_item_${index}`}
                     item={item}
-                    handleCheckChange={handleCheckChange}
                     isSelected={
                       isLoaded ? selectedItems.includes(item.id) : false
                     }
-                    // imgSource={img}
-                    assignMining={assignMining}
                     deleteData={deleteData}
-                    onUpdateProgress={(data, type) => {
+                    onUpdateProgress={(data) => {
                       setModalProgressOpen(true);
                       setSelectedProgress(data);
-                      setUpdateType(type);
                     }}
                   />
                 );

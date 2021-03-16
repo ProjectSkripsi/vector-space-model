@@ -78,7 +78,7 @@ module.exports = {
   "menu.forgot-password": "Forgot Password",
   "menu.error": "Error",
   "menu.applications": "Applications",
-  "menu.todo": "Daftar Tweet",
+  "menu.todo": "Data Training",
   "menu.survey": "Survey",
   "menu.chat": "Chat",
   "menu.ui": "UI",
@@ -153,11 +153,14 @@ module.exports = {
   "menu.model": "Model",
   "menu.tweet": "Data Tweet",
   "menu.location": "Lokasi Aduan",
-  "menu.list": "Data Tweet",
+  "menu.list": "Data Training",
   "menu.data-school": "Data Sekolah",
   "menu.data-mining": "Data Mining",
   "menu.master-user": "Pengaturan Akun",
   "menu.account-setting": "Ubah Profil",
+  "menu.data-training": "Data Training",
+  "menu.tweet-covid": "Tweet Covid-19",
+  "menu.statistic": "Statistik Vector Model Covid-19",
 
   /* 04.Dashboards */
   "dashboards.pending-orders": "Pending Orders",
@@ -211,6 +214,8 @@ module.exports = {
   "dashboards.keyword": "Keyword",
   "dashboards.search": "Search",
   "dashboards.top-rated-items": "Top Rated Items",
+  "dashboards.statistic-vaccine": "Sentimen Vaksinasi COVID-19",
+  "dashboards.statistic-penanganan": "Sentimen Penanganan COVID-19",
 
   /* 05.Pages */
   "pages.add-new": "ADD NEW",

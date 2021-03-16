@@ -6,7 +6,7 @@ import { baseUrl } from "../../../constants/defaultValues";
 const ReactDOMServer = require("react-dom/server");
 
 const dropzoneComponentConfig = {
-  postUrl: `${baseUrl}/upload/image`,
+  postUrl: `https://bp-paud.arul21.com/api/v1/upload/image`,
 };
 
 const dropzoneConfig = {

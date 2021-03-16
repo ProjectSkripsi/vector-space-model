@@ -57,8 +57,10 @@ const TodoListItem = ({
               >
                 <p className="font-weight-medium mb-0 ">
                   {item.user.name} - @{item.user.screen_name}
+                  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                  <Badge color="info">{item.classification}</Badge>
                 </p>
-                <p className="text-muted mb-0 text-small">
+                <p className="text-muted mb-0 text-small pt-1">
                   {item.user.description}
                 </p>
               </a>
@@ -74,16 +76,12 @@ const TodoListItem = ({
                   Actions
                 </DropdownToggle>
                 <DropdownMenu>
-                  {/* <DropdownItem
-                  // onClick={() => onUpdateProgress(item, "criteria")}
-                  >
-                    Update Kriteria
-                  </DropdownItem>
                   <DropdownItem
-                  // onClick={() => onUpdateProgress(item, "progress")}
+                    onClick={() => onUpdateProgress(item, "criteria")}
                   >
-                    Update Progress
-                  </DropdownItem> */}
+                    Update Klasifikasi
+                  </DropdownItem>
+
                   <DropdownItem onClick={() => deleteData(item._id)}>
                     Hapus
                   </DropdownItem>

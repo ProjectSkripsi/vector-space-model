@@ -10,26 +10,26 @@ const data = [
     // roles: [UserRole.Admin, UserRole.Editor],
     // subs: [
     //   {
-    //     icon: 'simple-icon-briefcase',
-    //     label: 'menu.default',
+    //     icon: "simple-icon-briefcase",
+    //     label: "menu.default",
     //     to: `${adminRoot}/dashboards/default`,
     //     // roles: [UserRole.Admin],
     //   },
     //   {
-    //     icon: 'simple-icon-pie-chart',
-    //     label: 'menu.analytics',
+    //     icon: "simple-icon-pie-chart",
+    //     label: "menu.analytics",
     //     to: `${adminRoot}/dashboards/analytics`,
     //     // roles: [UserRole.Admin],
     //   },
     //   {
-    //     icon: 'simple-icon-basket-loaded',
-    //     label: 'menu.ecommerce',
+    //     icon: "simple-icon-basket-loaded",
+    //     label: "menu.ecommerce",
     //     to: `${adminRoot}/dashboards/ecommerce`,
     //     // roles: [UserRole.Editor],
     //   },
     //   {
-    //     icon: 'simple-icon-doc',
-    //     label: 'menu.content',
+    //     icon: "simple-icon-doc",
+    //     label: "menu.content",
     //     to: `${adminRoot}/dashboards/content`,
     //     // roles: [UserRole.Editor],
     //   },
@@ -388,13 +388,13 @@ const data = [
       {
         icon: "iconsminds-data-center",
         label: "menu.list",
-        to: `${adminRoot}/tweet/list`,
+        to: `${adminRoot}/tweet/data-training`,
       },
-      // {
-      //   icon: "iconsminds-data-center",
-      //   label: "menu.data-mining",
-      //   to: `${adminRoot}/tweet/data-mining`,
-      // },
+      {
+        icon: "iconsminds-big-data",
+        label: "menu.tweet-covid",
+        to: `${adminRoot}/tweet/tweet-covid`,
+      },
       // {
       //   icon: "simple-icon-map",
       //   label: "menu.location",

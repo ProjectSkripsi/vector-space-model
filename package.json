@@ -1,7 +1,7 @@
 {
-  "name": "decision-support-system",
+  "name": "tweet-vector-model",
   "version": "5.2.0",
-  "description": "decision-support-system",
+  "description": "tweet-vector-model",
   "private": true,
   "dependencies": {
     "@glidejs/glide": "^3.4.1",
