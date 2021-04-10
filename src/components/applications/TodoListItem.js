@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Card,
   CardBody,
@@ -12,12 +12,12 @@ import {
   InputGroupAddon,
   Input,
   Button,
-} from "reactstrap";
-import { NavLink } from "react-router-dom";
-import moment from "moment";
-import { Colxx } from "../common/CustomBootstrap";
-import Linkify from "react-linkify";
-import Lightbox from "react-image-lightbox";
+} from 'reactstrap';
+import { NavLink } from 'react-router-dom';
+import moment from 'moment';
+import { Colxx } from '../common/CustomBootstrap';
+import Linkify from 'react-linkify';
+import Lightbox from 'react-image-lightbox';
 
 const TodoListItem = ({
   item,
@@ -44,7 +44,7 @@ const TodoListItem = ({
               <img
                 src={
                   item.user.profile_image_url_https ||
-                  "/assets/img/profiles/l-9.jpg"
+                  '/assets/img/profiles/l-9.jpg'
                 }
                 alt="avatar"
                 className="img-thumbnail border-0 rounded-circle list-thumbnail align-self-center xsmall"
@@ -77,7 +77,7 @@ const TodoListItem = ({
                 </DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem
-                    onClick={() => onUpdateProgress(item, "criteria")}
+                    onClick={() => onUpdateProgress(item, 'criteria')}
                   >
                     Update Klasifikasi
                   </DropdownItem>
@@ -93,7 +93,7 @@ const TodoListItem = ({
             <Linkify>
               {item.text}
               <p className="text-muted  text-small">
-                {moment(item.createdAt).startOf("hour").fromNow()}
+                {moment(item.created_at).startOf('second').fromNow()}
               </p>
             </Linkify>
           </div>
