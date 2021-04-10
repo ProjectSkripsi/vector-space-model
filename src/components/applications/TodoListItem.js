@@ -15,6 +15,7 @@ import {
 } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import moment from 'moment';
+import 'moment/locale/id';
 import { Colxx } from '../common/CustomBootstrap';
 import Linkify from 'react-linkify';
 import Lightbox from 'react-image-lightbox';
