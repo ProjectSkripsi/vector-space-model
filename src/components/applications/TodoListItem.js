@@ -29,6 +29,7 @@ const TodoListItem = ({
   assignMining,
   onUpdateProgress,
   className,
+  onSeeProses,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
@@ -77,6 +78,11 @@ const TodoListItem = ({
                   Actions
                 </DropdownToggle>
                 <DropdownMenu>
+                  {item.analyse && (
+                    <DropdownItem onClick={() => onSeeProses(item, 'criteria')}>
+                      Lihat Proses
+                    </DropdownItem>
+                  )}
                   <DropdownItem
                     onClick={() => onUpdateProgress(item, 'criteria')}
                   >

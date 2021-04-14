@@ -1,11 +1,11 @@
-import { adminRoot } from "./defaultValues";
+import { adminRoot } from './defaultValues';
 // import { UserRole } from "../helpers/authHelper"
 
 const data = [
   {
-    id: "dashboards",
-    icon: "iconsminds-shop-4",
-    label: "menu.dashboards",
+    id: 'dashboards',
+    icon: 'iconsminds-shop-4',
+    label: 'menu.dashboards',
     to: `${adminRoot}/dashboards`,
     // roles: [UserRole.Admin, UserRole.Editor],
     // subs: [
@@ -380,21 +380,22 @@ const data = [
   // },
 
   {
-    id: "tweet",
-    icon: "simple-icon-docs",
-    label: "menu.master-tweet",
+    id: 'tweet',
+    icon: 'simple-icon-docs',
+    label: 'menu.master-tweet',
     to: `${adminRoot}/tweet`,
     subs: [
       {
-        icon: "iconsminds-data-center",
-        label: "menu.list",
-        to: `${adminRoot}/tweet/data-training`,
-      },
-      {
-        icon: "iconsminds-big-data",
-        label: "menu.tweet-covid",
+        icon: 'iconsminds-big-data',
+        label: 'menu.tweet-covid',
         to: `${adminRoot}/tweet/tweet-covid`,
       },
+      {
+        icon: 'iconsminds-data-center',
+        label: 'menu.list',
+        to: `${adminRoot}/tweet/data-training`,
+      },
+
       // {
       //   icon: "simple-icon-map",
       //   label: "menu.location",
@@ -403,9 +404,9 @@ const data = [
     ],
   },
   {
-    id: "user",
-    icon: "simple-icon-user",
-    label: "menu.master-user",
+    id: 'user',
+    icon: 'simple-icon-user',
+    label: 'menu.master-user',
     to: `${adminRoot}/account-setting`,
   },
   // {
