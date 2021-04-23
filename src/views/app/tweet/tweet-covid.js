@@ -28,6 +28,7 @@ import Pagination from '../../../components/Model/Pagination';
 import { NotificationManager } from '../../../components/common/react-notifications';
 import ModalProgress from '../../../components/complaint/ModalProgress';
 import ModalProses from './ModalProses';
+import { ReactTableWithPaginationCard } from './TableComponent';
 
 const getIndex = (value, arr, prop) => {
   for (let i = 0; i < arr.length; i += 1) {
@@ -282,8 +283,8 @@ const DataTweet = ({
               </div>
             </Collapse>
           </div>
-          <Separator className="mb-5" />
-          <Row>
+          <Separator className="mb-3" />
+          {/* <Row>
             {isLoaded ? (
               items.map((item, index) => {
                 return (
@@ -314,7 +315,30 @@ const DataTweet = ({
               totalPage={totalPage}
               onChangePage={(i) => setCurrentPage(i)}
             />
-          </Row>
+          </Row> */}
+          {isLoaded ? (
+            <>
+              <ReactTableWithPaginationCard
+                data={items}
+                onUpdateProgress={(data, type) => {
+                  setModalProgressOpen(true);
+                  setSelectedProgress(data);
+                }}
+                deleteData={deleteData}
+                onSeeProses={(data) => {
+                  setDataProses(data);
+                  setOpenProses(true);
+                }}
+              />
+              <Pagination
+                currentPage={currentPage}
+                totalPage={totalPage}
+                onChangePage={(i) => setCurrentPage(i)}
+              />
+            </>
+          ) : (
+            <div className="loading" />
+          )}
         </Colxx>
       </Row>
       <ModalProses
