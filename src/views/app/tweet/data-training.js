@@ -106,6 +106,7 @@ const DataTweet = ({
 
   const fetchNewUpdate = () => {
     const token = getToken();
+
     const isSearch = search && `&search=${search}`;
     const order =
       selectedOrderOption && `?orderBy=${selectedOrderOption.column}`;
@@ -141,8 +142,8 @@ const DataTweet = ({
         return res.data;
       })
       .then((data) => {
-        createNotification('success', 'Berhasil hapus data complaint');
         fetchNewUpdate();
+        createNotification('success', 'Berhasil hapus data complaint');
       })
       .catch((error) => {
         createNotification('error');
