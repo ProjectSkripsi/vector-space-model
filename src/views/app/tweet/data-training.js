@@ -318,6 +318,12 @@ const DataTweet = ({
                 deleteData={deleteData}
                 dataTraining
               />
+              <div className="row">
+                <div className="col-md-12 text-center">
+                  Halaman {currentPage} - Menampilkan {items.length} dari{' '}
+                  {totalItemCount} Data
+                </div>
+              </div>
               <Pagination
                 currentPage={currentPage}
                 totalPage={totalPage}
